@@ -1,39 +1,52 @@
 import React from 'react';
 import { View, Text, StyleSheet,Image, TouchableOpacity } from 'react-native';
-const CircularCards = () => {
+import { useTheme } from '../context/ThemeContext';
+const CircularCards = ({name,image}) => {
+  const {theme}=useTheme();
+  const styles = StyleSheet.create({
+    container: {
+      padding: 10,
+    },
+    categoryItem: {
+      alignItems: 'center',
+      marginRight: 20,
+      flexDirection: 'column',
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      borderRadius: 5,
+      paddingVertical: 5,
+      paddingHorizontal: 10
+
+    },
+    categoryImage: {
+      width: 60,
+      height: 60,
+      borderRadius: 40,
+      // marginBottom: 8,
+    },
+    categoryName: {
+      fontSize: 14,
+      fontWeight: '700',
+      color: theme.colors.title,
+      fontFamily:theme.typography.fontFamily.regular,
+      marginLeft: 5
+    },
+  });
   return (
     <View style={styles.container}>
           <TouchableOpacity style={styles.categoryItem}>
             <View style={styles.categoryIcon}>
               <Image
-                       source={{ uri: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg" }}
+                       source={{ uri:image}}
                        style={styles.categoryImage}
                      />
             </View>
-            <Text style={styles.categoryName}>name</Text>
+            <Text style={styles.categoryName}>{name}</Text>
           </TouchableOpacity>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 10,
-  },
-  categoryItem: {
-    alignItems: 'center',
-    marginRight: 20,
-  },
-  categoryImage: {
-    width: 70,
-    height: 70,
-    borderRadius: 50,
-    marginBottom: 8,
-  },
-  categoryName: {
-    fontSize: 14,
-    color: 'gray',
-  },
-});
+
 
 export default CircularCards;

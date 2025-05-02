@@ -17,7 +17,7 @@ const HomeHeader = () => {
     <View style={styles.container}>
         <Image
           source={{
-            uri: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg",
+            uri: "https://img.freepik.com/free-vector/hand-drawn-real-estate-template-design_23-2150574144.jpg?ga=GA1.1.1701151830.1742473452&semt=ais_hybrid&w=740",
           }}
           style={styles.headerImage}
         />

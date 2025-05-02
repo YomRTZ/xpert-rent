@@ -10,25 +10,27 @@ export default function Home() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor:theme.colors.background,
-      paddingBottom:"15%",
-      paddingHorizontal:10,
+      paddingBottom:"10%",
     },
     title: {
-      fontSize: 18,
+      fontSize: theme.typography.fontSize.md,
       fontWeight: "bold",
-      marginVertical: 10,
-      marginHorizontal:10
+      marginVertical:5,
+      marginHorizontal:10,
+      color:theme.colors.heading,
+      fontFamily:theme.typography.fontFamily.semiBold
     },
     viewAll: {
-      color: "#4a6fa5",
-      fontSize: 14,
+      color: theme.colors.primary,
+      fontSize:theme.typography.fontSize.sm,
+      marginHorizontal:10
     },
     header: {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      marginBottom: 16,
+      marginBottom:5,
+     
     },
   });
   return (
@@ -39,31 +41,30 @@ export default function Home() {
       <SearchBar />
       <ScrollView  showsVerticalScrollIndicator={false}>
       {/* header */}
-      <View style={{ marginVertical: 10,backgroundColor:theme.colors.surface,paddingVertical:20}}>
+      <View style={{backgroundColor:theme.colors.surface,paddingVertical:20,marginVertical:5}}>
       <HomeHeader />
       </View>
       {/* category */}
-      <View style={{ marginVertical: 10,paddingVertical:20,backgroundColor:theme.colors.surface }}>
+      <View style={{ marginVertical:5,backgroundColor:theme.colors.surface }}>
         <Text style={styles.title}>Categories</Text>
         <HouseCategory/>
       </View>
       {/* cards */}
-    <View style={{ paddingVertical:20,backgroundColor:theme.colors.surface, marginVertical: 10}}>
-    <View style={[styles.header,{marginVertical: 10}]}>
+    <View style={{ paddingVertical:5,backgroundColor:theme.colors.surface, marginVertical:5}}>
+    <View style={[styles.header]}>
         <Text style={styles.title}>Popular nearest you</Text>
         <Text style={styles.viewAll}>View All</Text>
       </View>
        <NearstHouse/>
     </View>
-      <View style={{ marginVertical: 10,backgroundColor:theme.colors.surface,paddingVertical:20 }}>
-      <View style={[styles.header,{marginVertical: 10}]}>
+      <View style={{backgroundColor:theme.colors.surface,paddingVertical:5,marginVertical:5 }}>
+      <View style={[styles.header]}>
         <Text style={styles.title}>Popular nearest you</Text>
         <Text style={styles.viewAll}>View All</Text>
       </View>
        <NearstHouse/>
       </View>
       </ScrollView>
-      
     </View>
   );
 }

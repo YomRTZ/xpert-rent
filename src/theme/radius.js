@@ -2,7 +2,7 @@ const radius = {
   // button/icon
     small: 4,
     //regular buttons/inputs
-    regular: 8,
+    regular: 5,
     //cards
     medium: 12,
     //modals/containers

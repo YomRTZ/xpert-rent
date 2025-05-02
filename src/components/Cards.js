@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { useTheme } from "../context/ThemeContext";
 import { Ionicons } from "@expo/vector-icons";
-const Cards = () => {
+const Cards = ({image}) => {
   const { theme } = useTheme();
   const styles = StyleSheet.create({
     container: {
@@ -52,7 +52,7 @@ const Cards = () => {
     <View style={styles.container}>
       <TouchableOpacity style={[styles.propertyCard,theme.shadows.medium]}>
         <Image
-          source={{ uri: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg" }}
+          source={{ uri:image}}
           style={styles.propertyImage}
         />
         <View style={styles.propertyDetails}>

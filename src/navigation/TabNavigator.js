@@ -1,19 +1,20 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../pages/HomePage/Home';
+import Setting from '../pages/Setting';
 import { Ionicons } from '@expo/vector-icons'; 
-
+import { useTheme } from '../context/ThemeContext';
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
+  const{theme}=useTheme();
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: '#4a6fa5',
+          backgroundColor:theme.colors.background,
           height: 50,
-          borderTopWidth: 0,
           elevation: 5,
           shadowColor: '#000',
           shadowOpacity: 0.1,
@@ -26,7 +27,7 @@ export default function TabNavigator() {
           marginBottom: 8,
         },
         tabBarActiveTintColor: '#34ebd8',
-        tabBarInactiveTintColor: '#999',
+        tabBarInactiveTintColor:theme.colors.iconColor,
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           if (route.name === 'Home') iconName = focused ? 'home' : 'home-outline';
@@ -36,6 +37,7 @@ export default function TabNavigator() {
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Settings" component={Setting} />
     </Tab.Navigator>
   );
 }
