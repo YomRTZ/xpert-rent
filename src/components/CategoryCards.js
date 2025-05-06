@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet,Image, TouchableOpacity } from 'react-native';
 import { useTheme } from '../context/ThemeContext';
-const CircularCards = ({name,image}) => {
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+const CategoryCards = ({name,iconName}) => {
   const {theme}=useTheme();
   const styles = StyleSheet.create({
     container: {
@@ -9,20 +10,15 @@ const CircularCards = ({name,image}) => {
     },
     categoryItem: {
       alignItems: 'center',
-      marginRight: 20,
-      flexDirection: 'column',
+      flexDirection: 'row',
       justifyContent: 'flex-start',
       alignItems: 'center',
       borderRadius: 5,
       paddingVertical: 5,
-      paddingHorizontal: 10
-
-    },
-    categoryImage: {
-      width: 60,
-      height: 60,
-      borderRadius: 40,
-      // marginBottom: 8,
+      paddingHorizontal: 10,
+       backgroundColor:theme.colors.surface,
+       borderWidth: 0.5,
+       borderColor: theme.colors.border,
     },
     categoryName: {
       fontSize: 14,
@@ -36,10 +32,7 @@ const CircularCards = ({name,image}) => {
     <View style={styles.container}>
           <TouchableOpacity style={styles.categoryItem}>
             <View style={styles.categoryIcon}>
-              <Image
-                       source={{ uri:image}}
-                       style={styles.categoryImage}
-                     />
+            <MaterialCommunityIcons  name={iconName} size={24} color={theme.colors.iconColor} />
             </View>
             <Text style={styles.categoryName}>{name}</Text>
           </TouchableOpacity>
@@ -49,4 +42,4 @@ const CircularCards = ({name,image}) => {
 
 
 
-export default CircularCards;
+export default CategoryCards;

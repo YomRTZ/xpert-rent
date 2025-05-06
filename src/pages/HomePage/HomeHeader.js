@@ -17,7 +17,7 @@ const HomeHeader = () => {
     <View style={styles.container}>
         <Image
           source={{
-            uri: "https://img.freepik.com/free-vector/hand-drawn-real-estate-template-design_23-2150574144.jpg?ga=GA1.1.1701151830.1742473452&semt=ais_hybrid&w=740",
+            uri: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSJ-nWncfDkjMNwDQ42kg7Xk5yr21zQBFUHlBtlfeDaWSlxOhZP",
           }}
           style={styles.headerImage}
         />

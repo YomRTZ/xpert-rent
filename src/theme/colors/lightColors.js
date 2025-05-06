@@ -1,8 +1,8 @@
 export default {
-  background: '#f5f5f5',
+  background: '#f1f5f9',
   surface: '#FFFFFF',
   primary: '#4a6fa5',
-  secondary: '#4B5563',
+  secondary: '#334155',
   accent: '#10B981',
   heading: '#11181C',
   title: '#6B7280',
@@ -14,7 +14,7 @@ export default {
   info: '#3B82F6',
   activeButton: '#4a6fa5',
   bottomNavBackground: '#4a6fa5',
-  iconColor: '#4a6fa5',
-  activeTextColor: '#34ebd8',
-  inActiveTextColor: '#4a6fa5'
+  iconColor: '#334155',
+  activeColor: '#1e293b',
+  inActiveColor: '#4a6fa5'
 };

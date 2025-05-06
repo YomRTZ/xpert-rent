@@ -26,8 +26,8 @@ export default function TabNavigator() {
           fontWeight: '600',
           marginBottom: 8,
         },
-        tabBarActiveTintColor: '#34ebd8',
-        tabBarInactiveTintColor:theme.colors.iconColor,
+        tabBarActiveTintColor: theme.colors.activeColor,
+        tabBarInactiveTintColor:theme.colors.inActiveColor,
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           if (route.name === 'Home') iconName = focused ? 'home' : 'home-outline';
