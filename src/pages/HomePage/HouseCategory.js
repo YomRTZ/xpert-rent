@@ -1,6 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet,} from 'react-native';
-import { useTheme } from '../../context/ThemeContext';
+import { ScrollView, StyleSheet} from 'react-native';
+import CategoryCards from '../../components/CategoryCards';
+
 const HouseCategory = () => {
     const {theme}=useTheme();
     const styles = StyleSheet.create({
@@ -33,14 +34,11 @@ const HouseCategory = () => {
       },
     });
   return (
-    <ScrollView style={styles.container} horizontal showsHorizontalScrollIndicator={false}>
-    <TouchableOpacity style={styles.categoryItem}>
-      <View style={styles.categoryIcon}>
-      
-      </View>
-      <Text style={styles.categoryName}>{name}</Text>
-    </TouchableOpacity>
-</ScrollView>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+             <CategoryCards name="Apartment" iconName="home-city-outline" />
+             <CategoryCards name="Condominium" iconName="office-building"/>
+             <CategoryCards name="Ground house" iconName="home" />
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({

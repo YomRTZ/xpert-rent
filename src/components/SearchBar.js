@@ -25,9 +25,6 @@ const SearchBar = () => {
       height: 45,
       paddingHorizontal: 10,
     },
-    icon: {
-      marginRight: 5,
-    },
   });
   return (
     <View style={styles.container}>
@@ -38,8 +35,7 @@ const SearchBar = () => {
           placeholder="Search for house..."
           placeholderTextColor="gray"
         />
-       
-        <Ionicons name="options" size={20} color="black" />
+        <Ionicons name="options" size={20} color={theme.colors.iconColor} />
         </View>
      
     </View>

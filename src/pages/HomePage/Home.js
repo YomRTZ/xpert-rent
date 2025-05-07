@@ -5,6 +5,7 @@ import Navbar from "../Navbar";
 import NearstHouse from "./NearstHouse";
 import HouseCategory from "./HouseCategory";
 import { useTheme } from "../../context/ThemeContext";
+import RecommendHouse from "./RecommendHouse";
 export default function Home() {
   const { theme } = useTheme();
   const styles = StyleSheet.create({
@@ -40,29 +41,29 @@ export default function Home() {
       {/* search bar */}
       <SearchBar />
       <ScrollView  showsVerticalScrollIndicator={false}>
+       {/* category */}
+      <View style={{ marginVertical:5 }}>
+      <Text style={styles.title}>Categories</Text>
+      <HouseCategory/>
+      </View>
       {/* header */}
-      <View style={{backgroundColor:theme.colors.surface,paddingVertical:20,marginVertical:5}}>
+      <View style={{paddingVertical:5,marginVertical:5}}>
       <HomeHeader />
       </View>
-      {/* category */}
-      <View style={{ marginVertical:5,backgroundColor:theme.colors.surface }}>
-        <Text style={styles.title}>Categories</Text>
-        <HouseCategory/>
-      </View>
       {/* cards */}
-    <View style={{ paddingVertical:5,backgroundColor:theme.colors.surface, marginVertical:5}}>
+    <View style={{ paddingVertical:5,marginVertical:5}}>
     <View style={[styles.header]}>
-        <Text style={styles.title}>Popular nearest you</Text>
+        <Text style={styles.title}>Popular Nearest You</Text>
         <Text style={styles.viewAll}>View All</Text>
       </View>
        <NearstHouse/>
     </View>
-      <View style={{backgroundColor:theme.colors.surface,paddingVertical:5,marginVertical:5 }}>
+      <View style={{paddingVertical:5,marginVertical:5 }}>
       <View style={[styles.header]}>
-        <Text style={styles.title}>Popular nearest you</Text>
+        <Text style={styles.title}>Recommend For You</Text>
         <Text style={styles.viewAll}>View All</Text>
       </View>
-       <NearstHouse/>
+      <RecommendHouse />
       </View>
       </ScrollView>
     </View>

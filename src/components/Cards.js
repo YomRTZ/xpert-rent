@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigation } from '@react-navigation/native';
 import {
   View,
   Text,
@@ -9,48 +10,56 @@ import {
 import { useTheme } from "../context/ThemeContext";
 import { Ionicons } from "@expo/vector-icons";
 const Cards = ({image}) => {
+  const navigation = useNavigation();
   const { theme } = useTheme();
   const styles = StyleSheet.create({
     container: {
-      paddingHorizontal: 10,
+      marginHorizontal:7,
+      marginVertical:10
     },
     propertyCard: {
-      width: 250,
-      borderRadius:theme.radius.medium,
-      backgroundColor: "#fff",
-      marginRight: 5,
-      marginVertical: 10,
+      width: 210,
+      borderRadius:theme.radius.small,
+      backgroundColor:theme.colors.surface,
     },
     propertyImage: {
       width: "100%",
       height: 150,
-      borderRadius: theme.radius.medium,
+      borderTopLeftRadius: theme.radius.small,
+      borderTopRightRadius: theme.radius.small,
     },
     propertyDetails: {
-      padding: 12,
+      paddingVertical: 12,
+      paddingHorizontal:10,
     },
     propertyPrice: {
       fontSize: 16,
       fontWeight: "bold",
       marginBottom: 4,
+      color: theme.colors.title,
+      fontFamily:theme.typography.fontFamily.semiBold,
     },
     ratingContainer: {
       flexDirection: "row",
       alignItems: "center",
       marginBottom: 4,
+      color: theme.colors.title,
+      fontFamily:theme.typography.fontFamily.regular,
     },
     rating: {
       marginLeft: 4,
       fontSize: 14,
+      color: theme.colors.title,
     },
     propertyAddress: {
       fontSize: 14,
-      color: "gray",
+      fontFamily:theme.typography.fontFamily.regular,
+      color: theme.colors.title,
     },
   });
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={[styles.propertyCard,theme.shadows.medium]}>
+      <TouchableOpacity style={[styles.propertyCard,theme.shadows.medium]} onPress={()=> navigation.navigate('HomeDetails')}>
         <Image
           source={{ uri:image}}
           style={styles.propertyImage}
