@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet} from 'react-native';
 import CategoryCards from '../../components/CategoryCards';
-
+import {useTheme} from '../../context/ThemeContext';
 const HouseCategory = () => {
     const {theme}=useTheme();
     const styles = StyleSheet.create({
