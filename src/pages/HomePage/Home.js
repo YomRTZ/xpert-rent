@@ -6,6 +6,7 @@ import NearstHouse from "./NearstHouse";
 import HouseCategory from "./HouseCategory";
 import { useTheme } from "../../context/ThemeContext";
 import RecommendHouse from "./RecommendHouse";
+import { SafeAreaView } from "react-native-safe-area-context";
 export default function Home() {
   const { theme } = useTheme();
   const styles = StyleSheet.create({
@@ -35,7 +36,7 @@ export default function Home() {
     },
   });
   return (
-    <View style={[styles.container,{backgroundColor:theme.colors.background}]}>
+    <SafeAreaView style={[styles.container,{backgroundColor:theme.colors.background}]}>
       {/* nav */}
       <Navbar />
       {/* search bar */}
@@ -58,7 +59,7 @@ export default function Home() {
       </View>
        <NearstHouse/>
     </View>
-      <View style={{paddingVertical:5,marginVertical:5 }}>
+      <View>
       <View style={[styles.header]}>
         <Text style={styles.title}>Recommend For You</Text>
         <Text style={styles.viewAll}>View All</Text>
@@ -66,6 +67,6 @@ export default function Home() {
       <RecommendHouse />
       </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }

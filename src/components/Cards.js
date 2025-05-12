@@ -15,7 +15,6 @@ const Cards = ({image}) => {
   const styles = StyleSheet.create({
     container: {
       marginHorizontal:7,
-      marginVertical:10
     },
     propertyCard: {
       width: 210,

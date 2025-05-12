@@ -4,15 +4,16 @@ import {
   Text,
   Image,
   StyleSheet,
-  ScrollView,
   TouchableOpacity,
 } from "react-native";
 import { Ionicons, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "../../context/ThemeContext";
+import { ScrollView } from "react-native-gesture-handler";
 export default function HomeDetails() {
   const { theme } = useTheme();
   const styles = StyleSheet.create({
     container: {
+      flex:1,
       paddingBottom: 20,
       backgroundColor: theme.colors.background,
     },
@@ -160,15 +161,17 @@ export default function HomeDetails() {
     },
   });
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Image
+    <View style={styles.container}>
+     
+<View> 
+<Image
         source={{
-          uri: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg",
+          uri: "https://www.arhomes.com/wp-content/uploads/2022/11/Dawning_OptionalPool-Dusk.webp",
         }}
         style={styles.image}
       />
-
-      <View style={styles.card}>
+      </View>
+      <ScrollView style={styles.card}>
         <View style={styles.header}>
           <View style={styles.titleSection}>
             <Text style={styles.title}>Gorgeous Apartment</Text>
@@ -242,11 +245,10 @@ export default function HomeDetails() {
             />
           </View>
         </View>
-
-        <TouchableOpacity style={styles.button}>
+      </ScrollView>
+      <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Rent Now</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+        </TouchableOpacity> 
+    </View>
   );
 }
