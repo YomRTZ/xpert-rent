@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useEffect} from "react";
+import PropertyRepository from '../../repository/PropertyRepository';
 import {
   View,
   Text,
@@ -8,9 +9,14 @@ import {
 } from "react-native";
 import { Ionicons, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "../../context/ThemeContext";
-import { ScrollView } from "react-native-gesture-handler";
+import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 export default function HomeDetails() {
   const { theme } = useTheme();
+  const navigation = useNavigation();
+  useEffect(()=>{
+    PropertyRepository.getProperty();
+  },[]);
   const styles = StyleSheet.create({
     container: {
       flex:1,
@@ -139,11 +145,14 @@ export default function HomeDetails() {
       alignItems: "center",
     },
     button: {
+      position:"absolute",
+      bottom:25,
+      left:"20%",
       backgroundColor:theme.colors.primary,
       padding: 14,
-      borderRadius: 25,
+      width:250,
+      borderRadius:theme.radius.regular,
       alignItems: "center",
-      marginTop: 25,
     },
     buttonText: {
       fontFamily:theme.typography.fontFamily.regular,
@@ -161,7 +170,7 @@ export default function HomeDetails() {
     },
   });
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
      
 <View> 
 <Image
@@ -170,6 +179,7 @@ export default function HomeDetails() {
         }}
         style={styles.image}
       />
+       <View style={{position:"absolute",top:"25%",left:"5%"}}><TouchableOpacity onPress={()=>navigation.goBack()}><Ionicons name="arrow-back" size={40} color={theme.colors.primary}/></TouchableOpacity></View> 
       </View>
       <ScrollView style={styles.card}>
         <View style={styles.header}>
@@ -249,6 +259,6 @@ export default function HomeDetails() {
       <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Rent Now</Text>
         </TouchableOpacity> 
-    </View>
+    </GestureHandlerRootView>
   );
 }

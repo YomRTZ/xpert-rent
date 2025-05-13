@@ -27,14 +27,21 @@ const Navbar = () => {
     },
   });
   return (
-    <TouchableOpacity style={styles.container} onPress={()=> navigation.navigate('Profile')}>
+   <View style={styles.container}>
+    <TouchableOpacity onPress={()=> navigation.navigate('Profile')}>
       <View style={styles.leftContainer}>
       <Avatar name="chimsa" role="owner" />
       </View>
+      </TouchableOpacity>
       <View style={styles.rightContainer}>
+      <TouchableOpacity onPress={()=> navigation.navigate('AddProperty')}>
+        <Ionicons name="add" size={24} color={theme.colors.iconColor} style={styles.icon} />
+      </TouchableOpacity>
         <Ionicons name="notifications-outline" size={24} color={theme.colors.iconColor} style={styles.icon} />
       </View>
-    </TouchableOpacity>
+   </View>
   );
 };
 export default Navbar;
+
+
