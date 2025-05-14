@@ -36,12 +36,10 @@ export default function Home() {
     },
   });
   return (
-    <SafeAreaView style={[styles.container,{backgroundColor:theme.colors.background}]}>
-      {/* nav */}
+    <SafeAreaView style={[styles.container,{backgroundColor:theme.colors.surface}]}>
       <Navbar />
-      {/* search bar */}
       <SearchBar />
-      <ScrollView  showsVerticalScrollIndicator={false}>
+      <ScrollView  showsVerticalScrollIndicator={false} contentContainerStyle={{backgroundColor:theme.colors.background}}>
        {/* category */}
       <View style={{ marginVertical:5 }}>
       <Text style={styles.title}>Categories</Text>
