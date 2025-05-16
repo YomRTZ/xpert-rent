@@ -1,0 +1,42 @@
+import React from 'react';
+import { TextInput, Button, View } from 'react-native';
+import { useFormValidation } from '../hooks/useFormValidation';
+import { validateEmail, validatePassword } from '../validators/formValidators';
+import ErrorMessage from '../components/ErrorMessage';
+
+export default function LoginScreen() {
+  const { values, errors, handleChange, validateAll } = useFormValidation(
+    { email: '', password: '' },
+    {
+      email: validateEmail,
+      password: validatePassword,
+    }
+  );
+
+  const handleSubmit = () => {
+    if (validateAll()) {
+      // Submit form
+    }
+  };
+
+  return (
+    <View>
+      <TextInput
+        placeholder="Email"
+        value={values.email}
+        onChangeText={(text) => handleChange('email', text)}
+      />
+      <ErrorMessage message={errors.email} />
+
+      <TextInput
+        placeholder="Password"
+        secureTextEntry
+        value={values.password}
+        onChangeText={(text) => handleChange('password', text)}
+      />
+      <ErrorMessage message={errors.password} />
+
+      <Button title="Login" onPress={handleSubmit} />
+    </View>
+  );
+}

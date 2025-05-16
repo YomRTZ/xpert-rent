@@ -36,7 +36,7 @@ export default function Home() {
     },
   });
   return (
-    <SafeAreaView style={[styles.container,{backgroundColor:theme.colors.surface}]}>
+    <SafeAreaView style={[styles.container,{backgroundColor:theme.colors.background}]}>
       <Navbar />
       <SearchBar />
       <ScrollView  showsVerticalScrollIndicator={false} contentContainerStyle={{backgroundColor:theme.colors.background}}>
