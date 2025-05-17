@@ -8,9 +8,7 @@ import { useModal } from '../context/ModalContext';
 const Navbar = () => {
   const {theme}=useTheme();
   const navigation = useNavigation();
-
   const { showModal } = useModal();
-
   const openOwnerPage = () => {
     showModal(
       'OwnerPage',
