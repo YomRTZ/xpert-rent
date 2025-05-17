@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "../context/ThemeContext";
 import Avatar from "../components/Avater";
-export default function OwnerPage({ title }) {
+export default function OwnerPage({ title,navigation}) {
   const { theme } = useTheme();
   const styles = StyleSheet.create({
     container: {
@@ -76,14 +76,14 @@ export default function OwnerPage({ title }) {
               />
               <Text style={styles.sectionTitle}>Dashboard</Text>
             </View>
-            <View style={{ alignItems: "center" }}>
+            <TouchableOpacity style={{ alignItems: "center" }} onPress={() => {navigation.navigate("AddProperty")}}>
               <MaterialCommunityIcons
                 name="home-plus-outline"
                 size={30}
                 color={theme.colors.iconColor}
               />
               <Text style={styles.sectionTitle}>AddProperty</Text>
-            </View>
+            </TouchableOpacity>
             <View style={{ alignItems: "center" }}>
               <MaterialCommunityIcons
                 name="home-group"

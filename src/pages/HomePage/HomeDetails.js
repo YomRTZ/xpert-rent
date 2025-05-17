@@ -208,7 +208,7 @@ export default function HomeDetails() {
       fontSize: theme.typography.fontSize.md,
     },
     scrollContainer: {
-      height: 250,
+      height: 200,
     },
     arrowIcon:{
        position: "absolute",

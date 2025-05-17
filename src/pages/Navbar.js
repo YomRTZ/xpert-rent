@@ -11,9 +11,10 @@ const Navbar = () => {
   const { showModal } = useModal();
   const openOwnerPage = () => {
     showModal(
-      'OwnerPage',
+      'OwnerPage', 
       {
         title: 'Property Management',
+         navigation,
         variant: 'flex-end', 
         containerStyle: {
           backgroundColor:theme.colors.background,
