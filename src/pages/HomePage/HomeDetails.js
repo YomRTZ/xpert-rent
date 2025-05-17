@@ -44,6 +44,7 @@ export default function HomeDetails() {
     setSelectedImage(null);
   };
   const { width: screenWidth } = Dimensions.get("window");
+   const { height: screenHeight } = Dimensions.get("window");
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -53,30 +54,32 @@ export default function HomeDetails() {
       width: screenWidth,
       height:"100%"
     },
-    fullScreenImageContainer: {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "rgba(0, 0, 0, 0.8)",
-      zIndex: 10,
-    },
-    fullScreenImage: {
-      width: "100%",
-      height: "100%",
-      resizeMode: "contain",
-    },
-    closeButton: {
-      position: "absolute",
-      top: 40,
-      right: 20,
-      backgroundColor: theme.colors.background,
-      borderRadius: 50,
-      padding: 10,
-    },
+  fullScreenImageContainer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.9)",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 999,
+  },
+  fullScreenImage: {
+    width:screenWidth,
+    height:screenHeight,
+    resizeMode: "contain",
+  },
+  closeButton: {
+    position: "absolute",
+    top: 50,
+    right: 30,
+    backgroundColor: "rgba(0,0,0,0.6)",
+    borderRadius: 25,
+    padding: 8,
+    alignItems: "center",
+    justifyContent: "center",
+  },
     imageDivider: {
       width: "25%",
       height: 3,
@@ -207,10 +210,17 @@ export default function HomeDetails() {
     scrollContainer: {
       height: 250,
     },
+    arrowIcon:{
+       position: "absolute",
+       top:20,
+      zIndex:10,
+      left:10,
+    }
   });
 
   return (
     <GestureHandlerRootView style={styles.container}>
+    <TouchableOpacity onPress={()=>navigation.goBack()} style={styles.arrowIcon}><Ionicons name="arrow-back" size={30} color={theme.colors.iconColor}/></TouchableOpacity>
       {selectedImage && (
         <View style={styles.fullScreenImageContainer}>
           <Image
