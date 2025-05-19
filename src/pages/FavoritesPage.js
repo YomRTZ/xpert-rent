@@ -15,7 +15,7 @@ const styles=StyleSheet.create({
       },
 })
   return (
-    <SafeAreaView style={{ padding: 10 }}>
+    <SafeAreaView style={{ padding: 10,backgroundColor:theme.colors.background,flex:1 }}>
          <View style={{ padding: 10 }}> <Text style={styles.title}>Favorites</Text></View>
       <FlatList
         data={favorites}

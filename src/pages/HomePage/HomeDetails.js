@@ -208,11 +208,11 @@ export default function HomeDetails() {
       fontSize: theme.typography.fontSize.md,
     },
     scrollContainer: {
-      height: 200,
+      height: 150,
     },
     arrowIcon:{
        position: "absolute",
-       top:20,
+       top:50,
       zIndex:10,
       left:10,
     }
@@ -220,7 +220,7 @@ export default function HomeDetails() {
 
   return (
     <GestureHandlerRootView >
-<SafeAreaView style={styles.container}>
+<View style={styles.container}>
      <View>
      <TouchableOpacity onPress={()=>navigation.goBack()} style={styles.arrowIcon}><Ionicons name="arrow-back" size={35} color={theme.colors.background}/></TouchableOpacity>
      </View>
@@ -344,7 +344,7 @@ export default function HomeDetails() {
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Rent Now</Text>
       </TouchableOpacity>
-</SafeAreaView>
+</View>
     </GestureHandlerRootView>
   );
 }
