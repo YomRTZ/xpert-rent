@@ -1,8 +1,11 @@
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity,Text,View ,StyleSheet,Image} from "react-native";
 import { useTheme } from "../context/ThemeContext";
+import { useFavorites } from "../context/FavoritesContext"
 export default function RecommendHouseCard({image}) {
   const { theme } = useTheme();
+   const { toggleFavorite, isFavorited } = useFavorites();
+   const isBookmarked = isFavorited({ image });
  const styles = StyleSheet.create({
     container: {
       marginHorizontal:10,
@@ -46,10 +49,23 @@ export default function RecommendHouseCard({image}) {
             color: theme.colors.title,
             fontFamily: theme.typography.fontFamily.regular,
             fontSize: theme.typography.fontSize.sm,
+          },
+          bookmark:{
+            position:"absolute",
+            zIndex:999,
+            right:5,
+            top:5,
           }
  });
    return(
     <TouchableOpacity style={styles.container}>
+      <TouchableOpacity style={styles.bookmark} onPress={() => toggleFavorite({ image })}>
+               <Ionicons
+                 name={isBookmarked ? "heart" : "heart-outline"}
+                 size={28}
+                 color={theme.colors.primary}
+               />
+             </TouchableOpacity>
     <Image
       source={{ uri:image}}
       style={styles.propertyImage}

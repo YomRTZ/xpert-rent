@@ -9,9 +9,12 @@ import {
 } from "react-native";
 import { useTheme } from "../context/ThemeContext";
 import { Ionicons } from "@expo/vector-icons";
+import { useFavorites } from "../context/FavoritesContext"
 const Cards = ({image}) => {
+  const { toggleFavorite, isFavorited } = useFavorites();
   const navigation = useNavigation();
   const { theme } = useTheme();
+  const isBookmarked = isFavorited({ image });
   const styles = StyleSheet.create({
     container: {
       marginHorizontal:7,
@@ -55,10 +58,23 @@ const Cards = ({image}) => {
       fontFamily:theme.typography.fontFamily.regular,
       color: theme.colors.title,
     },
+    bookmark:{
+      position:"absolute",
+      zIndex:999,
+      right:5,
+      top:5,
+    }
   });
   return (
     <View style={styles.container}>
       <TouchableOpacity style={[styles.propertyCard,theme.shadows.medium]} onPress={()=> navigation.navigate('HomeDetails')}>
+      <TouchableOpacity style={styles.bookmark} onPress={() => toggleFavorite({ image })}>
+          <Ionicons
+            name={isBookmarked ? "heart" : "heart-outline"}
+            size={28}
+            color={theme.colors.primary}
+          />
+        </TouchableOpacity>
         <Image
           source={{ uri:image}}
           style={styles.propertyImage}

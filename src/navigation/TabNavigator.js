@@ -4,6 +4,7 @@ import HomeScreen from '../pages/HomePage/Home';
 import Setting from '../pages/Setting';
 import { Ionicons } from '@expo/vector-icons'; 
 import { useTheme } from '../context/ThemeContext';
+import FavoritesPage from '../pages/FavoritesPage';
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
@@ -32,12 +33,14 @@ export default function TabNavigator() {
           let iconName;
           if (route.name === 'Home') iconName = focused ? 'home' : 'home-outline';
           else if (route.name === 'Settings') iconName = focused ? 'settings' : 'settings-outline';
+          else if (route.name === 'bookmark') iconName = focused ? 'bookmark' : 'bookmark-outline';
           return <Ionicons name={iconName} size={24} color={color} />;
         },
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Settings" component={Setting} />
+      <Tab.Screen name="bookmark" component={FavoritesPage} />
     </Tab.Navigator>
   );
 }

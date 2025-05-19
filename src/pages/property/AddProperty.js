@@ -9,10 +9,10 @@ import {
   Text,
   Image,
 } from 'react-native';
+import { useTheme } from '../../context/ThemeContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as ImagePicker from 'expo-image-picker';
 import PropertyRepository from '../../repository/PropertyRepository';
-import { useTheme } from '../../context/ThemeContext';
 import { Ionicons } from '@expo/vector-icons';
 import HouseCategory from '../HomePage/HouseCategory';
 import { useNavigation } from '@react-navigation/native';
