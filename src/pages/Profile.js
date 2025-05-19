@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { View, StyleSheet, Switch, Text, TouchableOpacity,TextInput } from "react-native";
+import { View, StyleSheet, Switch, Text, TouchableOpacity,TextInput, SafeAreaView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Avatar from "../components/Avater";
 import { useNavigation } from "@react-navigation/native";
@@ -22,6 +22,7 @@ const Profile = () => {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
+      padding:10,
       backgroundColor: theme.colors.surface,
     },
     leftContainer: {
@@ -58,9 +59,12 @@ const Profile = () => {
       fontSize: theme.typography.fontSize.md,
       fontWeight: theme.typography.fontWeight.bold,
     },
+    switchWrapper: {
+      transform: [{ scaleX: 1.2 }, { scaleY:0.9 }], 
+    },
   });
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <TouchableOpacity
         onPress={() => navigation.goBack()}
         style={{ padding: 10 }}
@@ -85,7 +89,9 @@ const Profile = () => {
       </View>
       <View style={styles.darkMode}>
         <Text style={{ marginLeft: 10,color:theme.colors.title }}>Dark Mode</Text>
+        <View style={styles.switchWrapper}>
         <Switch value={isDarkMode} onValueChange={toggleTheme} />
+      </View>
       </View>
          <View style={styles.details}>
         <View style={{ flexDirection: "row", alignItems: "center", flex: 1 }}>
@@ -159,7 +165,7 @@ const Profile = () => {
           </View>
         </View>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 export default Profile;

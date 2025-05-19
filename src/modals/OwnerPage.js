@@ -84,24 +84,24 @@ export default function OwnerPage({ title,navigation}) {
               />
               <Text style={styles.sectionTitle}>AddProperty</Text>
             </TouchableOpacity>
-            <View style={{ alignItems: "center" }}>
+            <TouchableOpacity style={{ alignItems: "center" }} onPress={() => {navigation.navigate("PropertyManagement")}}>
               <MaterialCommunityIcons
                 name="home-group"
                 size={30}
                 color={theme.colors.iconColor}
               />
               <Text style={styles.sectionTitle}>Properties</Text>
-            </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.buttonRow}>
-            <View style={{ alignItems: "center" }}>
+            <TouchableOpacity style={{ alignItems: "center" }} onPress={() => {navigation.navigate("TenantData")}}>
               <MaterialCommunityIcons
                 name="account-group-outline"
                 size={30}
                 color={theme.colors.iconColor}
               />
               <Text style={styles.sectionTitle}>Tenants</Text>
-            </View>
+            </TouchableOpacity>
             <View style={{ alignItems: "center" }}>
               <MaterialCommunityIcons
                 name="bank"

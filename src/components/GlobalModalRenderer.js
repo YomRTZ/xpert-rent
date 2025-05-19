@@ -63,5 +63,9 @@ const styles = StyleSheet.create({
     right: 10,
     zIndex: 10,
     padding: 5,
+    borderRadius: 25,
+    padding: 8,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

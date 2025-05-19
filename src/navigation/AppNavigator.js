@@ -5,6 +5,9 @@ import TabNavigator from './TabNavigator';
 import Profile from '../pages/Profile';
 import HomeDetails from "../pages/HomePage/HomeDetails";
 import AddProperty from "../pages/property/AddProperty";
+import PropertyUpdate from "../pages/property/PropertyUpdate";
+import TenantData from '../pages/ownerPage/TenantData';
+import PropertyManagement from '../pages/ownerPage/PropertyManagement';
 const Stack = createNativeStackNavigator();
 export default function AppNavigator() {
   return (
@@ -14,6 +17,9 @@ export default function AppNavigator() {
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="HomeDetails" component={HomeDetails} />
         <Stack.Screen name="AddProperty" component={AddProperty} />
+        <Stack.Screen name="PropertyUpdate" component={PropertyUpdate} />
+        <Stack.Screen name="TenantData" component={TenantData}/>
+        <Stack.Screen name="PropertyManagement" component={PropertyManagement}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

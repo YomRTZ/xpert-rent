@@ -8,13 +8,13 @@ import {
   StyleSheet,
   TouchableOpacity,
   Dimensions,
+  SafeAreaView,
 } from "react-native";
 import { Ionicons, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "../../context/ThemeContext";
 import {
   GestureHandlerRootView,
   ScrollView,
-  FlatList,
 } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 
@@ -191,7 +191,7 @@ export default function HomeDetails() {
     },
     button: {
       position: "absolute",
-      bottom:0,
+      bottom:15,
       zIndex:1,
       left: "50%",
       transform: [{ translateX: -125 }],
@@ -203,7 +203,7 @@ export default function HomeDetails() {
     },
     buttonText: {
       fontFamily: theme.typography.fontFamily.regular,
-      color: theme.colors.header,
+      color:theme.colors.header,
       fontWeight: theme.typography.fontWeight.bold,
       fontSize: theme.typography.fontSize.md,
     },
@@ -219,8 +219,11 @@ export default function HomeDetails() {
   });
 
   return (
-    <GestureHandlerRootView style={styles.container}>
-    <TouchableOpacity onPress={()=>navigation.goBack()} style={styles.arrowIcon}><Ionicons name="arrow-back" size={30} color={theme.colors.iconColor}/></TouchableOpacity>
+    <GestureHandlerRootView >
+<SafeAreaView style={styles.container}>
+     <View>
+     <TouchableOpacity onPress={()=>navigation.goBack()} style={styles.arrowIcon}><Ionicons name="arrow-back" size={35} color={theme.colors.background}/></TouchableOpacity>
+     </View>
       {selectedImage && (
         <View style={styles.fullScreenImageContainer}>
           <Image
@@ -341,6 +344,7 @@ export default function HomeDetails() {
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Rent Now</Text>
       </TouchableOpacity>
+</SafeAreaView>
     </GestureHandlerRootView>
   );
 }
