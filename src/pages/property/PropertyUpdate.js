@@ -183,7 +183,7 @@ const navigation=useNavigation();
     <SafeAreaView style={styles.container}>
        <TouchableOpacity onPress={()=>navigation.goBack()} style={{paddingLeft:10}}><Ionicons name="arrow-back" size={35} color={theme.colors.iconColor}/></TouchableOpacity>
       <ScrollView contentContainerStyle={{ paddingHorizontal: 10, paddingBottom: 50 }}>
-        <Text style={styles.title}>Add Property</Text>
+        <Text style={styles.title}>Update Property</Text>
 
         <Text style={styles.sectionTitle}>Category</Text>
         <HouseCategory />
