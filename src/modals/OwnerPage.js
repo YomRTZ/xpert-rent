@@ -3,11 +3,14 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "../context/ThemeContext";
 import Avatar from "../components/Avater";
-export default function OwnerPage({ title,navigation}) {
+import { useNavigation } from "@react-navigation/native";
+export default function OwnerPage({refRBSheet}) {
   const { theme } = useTheme();
+  const navigation=useNavigation();
   const styles = StyleSheet.create({
     container: {
       width: "100%",
+      height:"100%",
       alignItems: "center",
       backgroundColor: theme.colors.surface,
       borderTopLeftRadius: theme.radius.medium,
@@ -53,19 +56,19 @@ export default function OwnerPage({ title,navigation}) {
           alignItems: "start",
           justifyContent: "space-between",
           paddingHorizontal: "2%",
-          paddingVertical: "5%",
+          paddingVertical: "10",
         }}
       >
         <Avatar
           name="Chimsa"
           role="Owner"
-          avatarStyle={{ width: 70, height: 70, borderRadius: 25,borderRadius:50 }}
-          nameStyle={{ fontSize: 14, fontWeight: "600" }}
+          avatarStyle={{ width: 50, height: 50, borderRadius: 25,borderRadius:50 }}
+          nameStyle={{ fontSize:theme.typography.fontSize.sm, fontWeight:theme.typography.fontWeight.regular }}
           roleStyle={{ fontSize: 10, color: theme.colors.title }}
         />
       </View>
       <View style={styles.container}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title}>Owner Page</Text>
         <View style={styles.buttonColumns}>
           <View style={styles.buttonRow}>
             <View style={{ alignItems: "center" }}>
@@ -76,7 +79,7 @@ export default function OwnerPage({ title,navigation}) {
               />
               <Text style={styles.sectionTitle}>Dashboard</Text>
             </View>
-            <TouchableOpacity style={{ alignItems: "center" }} onPress={() => {navigation.navigate("AddProperty")}}>
+            <TouchableOpacity style={{ alignItems: "center" }} onPress={() => {refRBSheet?.current?.close(),navigation.navigate("AddProperty")}}>
               <MaterialCommunityIcons
                 name="home-plus-outline"
                 size={30}
@@ -84,7 +87,7 @@ export default function OwnerPage({ title,navigation}) {
               />
               <Text style={styles.sectionTitle}>AddProperty</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ alignItems: "center" }} onPress={() => {navigation.navigate("PropertyManagement")}}>
+            <TouchableOpacity style={{ alignItems: "center" }} onPress={() => {refRBSheet?.current?.close(),navigation.navigate("PropertyManagement")}}>
               <MaterialCommunityIcons
                 name="home-group"
                 size={30}
@@ -94,7 +97,7 @@ export default function OwnerPage({ title,navigation}) {
             </TouchableOpacity>
           </View>
           <View style={styles.buttonRow}>
-            <TouchableOpacity style={{ alignItems: "center" }} onPress={() => {navigation.navigate("TenantData")}}>
+            <TouchableOpacity style={{ alignItems: "center" }} onPress={() => {refRBSheet?.current?.close(),navigation.navigate("TenantData")}}>
               <MaterialCommunityIcons
                 name="account-group-outline"
                 size={30}

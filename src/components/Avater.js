@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { useTheme } from '../context/ThemeContext';
-
 const Avatar = ({
   name,
   role,
@@ -11,7 +10,6 @@ const Avatar = ({
   imageStyle,
 }) => {
   const { theme } = useTheme();
-
   const styles = StyleSheet.create({
     container: {
       flexDirection: 'row',

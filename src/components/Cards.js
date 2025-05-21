@@ -21,8 +21,8 @@ const Cards = ({image}) => {
     },
     propertyCard: {
       width: 210,
-      borderRadius:theme.radius.small,
-      backgroundColor:theme.colors.surface,
+      borderRadius:theme.radius.small ,
+      backgroundColor:theme.colors.surface, 
     },
     propertyImage: {
       width: "100%",

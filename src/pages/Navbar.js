@@ -1,31 +1,15 @@
 import React,{useRef} from 'react';
-import { View, StyleSheet, TouchableOpacity,Button,Text } from 'react-native';
+import { View, StyleSheet, TouchableOpacity} from 'react-native';
 import { Ionicons,MaterialIcons } from '@expo/vector-icons';
 import Avatar from '../components/Avater';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '../context/ThemeContext';
-import { useModal } from '../context/ModalContext';
-import CustomBottomSheet from '../components/CustomBottomSheet';
+import BottomSheet from '../components/BottomSheet';
+import OwnerPage from "../modals/OwnerPage"
 const Navbar = () => {
   const {theme}=useTheme();
   const navigation = useNavigation();
-  const { showModal } = useModal();
-  const bottomSheetRef = useRef();
-  // const openOwnerPage = () => {
-  //   showModal(
-  //     'OwnerPage', 
-  //     {
-  //       title: 'Property Management',
-  //        navigation,
-  //       variant: 'flex-end', 
-  //       containerStyle: {
-  //         backgroundColor:theme.colors.background,
-  //         borderTopLeftRadius: theme.radius.medium,
-  //       },
-  //     },
-  //     'fade'
-  //   );
-  // };
+  const refRBSheet = useRef();
   const styles = StyleSheet.create({
     container: {
       flexDirection: 'row',
@@ -49,22 +33,18 @@ const Navbar = () => {
    <View style={styles.container}>
     <TouchableOpacity onPress={()=> navigation.navigate('Profile')}>
       <View style={styles.leftContainer}>
-      <Avatar name="chimsa" role="owner" />
+      <Avatar name="chimsa" role="owner"/>
       </View>
       </TouchableOpacity>
       <View style={styles.rightContainer}>
-      <TouchableOpacity onPress={() => bottomSheetRef.current.open()}>
+      <TouchableOpacity onPress={()=>refRBSheet.current.open()}>
         <MaterialIcons name="manage-accounts"  size={30} color={theme.colors.iconColor} style={styles.icon} />
       </TouchableOpacity>
         <Ionicons name="notifications-outline" size={24} color={theme.colors.iconColor} style={styles.icon} />
       </View>
-      <CustomBottomSheet
-        ref={bottomSheetRef}
-        snapPoints={['25%', '60%']}
-        backgroundStyle={{ backgroundColor: '#ffe0e0' }}
-      >
-        <Text style={{ fontSize: 18 }}>This is content from Screen A</Text>
-      </CustomBottomSheet>
+      <BottomSheet ref={refRBSheet} height={350}>
+        <OwnerPage refRBSheet={refRBSheet}/>
+      </BottomSheet>
    </View>
   );
 };

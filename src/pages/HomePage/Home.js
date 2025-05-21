@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView,Platform,StatusBar} from "react-native";
 import HomeHeader from "./HomeHeader";
 import SearchBar from "../../components/SearchBar";
 import Navbar from "../Navbar";
@@ -6,9 +6,10 @@ import NearstHouse from "./NearstHouse";
 import HouseCategory from "./HouseCategory";
 import { useTheme } from "../../context/ThemeContext";
 import RecommendHouse from "./RecommendHouse";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useSafeAreaInsets} from "react-native-safe-area-context";
 export default function Home() {
   const { theme } = useTheme();
+  const insets = useSafeAreaInsets();
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -36,7 +37,9 @@ export default function Home() {
     },
   });
   return (
-    <SafeAreaView style={[styles.container,{backgroundColor:theme.colors.background}]}>
+    <>
+    <View style={[styles.container,{backgroundColor:theme.colors.background}]}>
+    <View style={{paddingTop: insets.top ,backgroundColor:theme.colors.surface}} />
       <Navbar />
       <SearchBar />
       <ScrollView  showsVerticalScrollIndicator={false} contentContainerStyle={{backgroundColor:theme.colors.background}}>
@@ -65,6 +68,7 @@ export default function Home() {
       <RecommendHouse />
       </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
+    </>
   );
 }

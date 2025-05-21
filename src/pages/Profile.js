@@ -4,11 +4,12 @@ import { Ionicons } from "@expo/vector-icons";
 import Avatar from "../components/Avater";
 import { useNavigation } from "@react-navigation/native";
 import { useTheme } from "../context/ThemeContext";
+import { useSafeAreaInsets} from "react-native-safe-area-context";
 const Profile = () => {
   const navigation = useNavigation();
   const { theme, toggleTheme, isDarkMode } = useTheme();
+  const insets = useSafeAreaInsets();
     const [isOpen, setIsOpen] = useState(false);
-
   const toggleDropdown = () => {
     setIsOpen(prev => !prev);
   };
@@ -64,19 +65,21 @@ const Profile = () => {
     },
   });
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
+       <View style={{paddingTop: insets.top}} />
       <TouchableOpacity
         onPress={() => navigation.goBack()}
-        style={{ padding: 10 }}
+        style={{ paddingHorizontal: 10 }}
       >
         <Ionicons name="arrow-back" size={30} color={theme.colors.title} />
       </TouchableOpacity>
       <View
         style={{
-          padding: 10,
+          padding:5,
           flexDirection: "row",
           justifyContent: "space-between",
-          marginBottom:10
+          marginBottom:5,
+          paddingHorizontal:5
         }}
       >
         <Avatar name="chimsa" role="owner" />
@@ -165,7 +168,7 @@ const Profile = () => {
           </View>
         </View>
       )}
-    </SafeAreaView>
+    </View>
   );
 };
 export default Profile;

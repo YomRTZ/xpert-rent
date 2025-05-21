@@ -182,6 +182,14 @@ const navigation=useNavigation();
   return (
     <SafeAreaView style={styles.container}>
        <TouchableOpacity onPress={()=>navigation.goBack()} style={{paddingLeft:10}}><Ionicons name="arrow-back" size={35} color={theme.colors.iconColor}/></TouchableOpacity>
+       <View style={styles.topSection}>      
+    <TouchableOpacity onPress={handleDelate} style={[styles.button,{backgroundColor:theme.colors.error}]}>
+        <Text style={styles.buttonText}>Delate</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+          <Text style={styles.buttonText}>Update</Text>
+        </TouchableOpacity>
+      </View>
       <ScrollView contentContainerStyle={{ paddingHorizontal: 10, paddingBottom: 50 }}>
         <Text style={styles.title}>Update Property</Text>
 
@@ -257,14 +265,6 @@ const navigation=useNavigation();
           ))}
         </ScrollView>
       </ScrollView>
-      <View style={styles.topSection}>      
-    <TouchableOpacity onPress={handleDelate} style={[styles.button,{backgroundColor:theme.colors.error}]}>
-        <Text style={styles.buttonText}>Delate</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-          <Text style={styles.buttonText}>Update</Text>
-        </TouchableOpacity>
-      </View>
     </SafeAreaView>
   );
 }
