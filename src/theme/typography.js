@@ -22,7 +22,7 @@ const typography = {
       xxl: 32,
     },
     title: (theme) => ({
-      fontSize: theme.typography.fontSize.xl,
+      fontSize: theme.typography.fontSize.lg,
       fontFamily: theme.typography.fontFamily.regular,
       color: theme.colors.title,
       fontWeight: theme.typography.fontWeight.bold,

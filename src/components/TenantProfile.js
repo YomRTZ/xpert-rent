@@ -40,7 +40,6 @@ export default function TenantProfile({image,name,address,price}) {
  });
    return(
     <TouchableOpacity style={styles.container}>
-
     <Image
       source={{ uri:image}}
       style={styles.propertyImage}

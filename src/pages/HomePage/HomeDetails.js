@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import Avatar from "../../components/Avater";
 // import PropertyRepository from '../../repository/PropertyRepository';
 import {
@@ -21,7 +21,13 @@ export default function HomeDetails() {
   const { theme } = useTheme();
   const navigation = useNavigation();
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollRef = useRef(null);
+  const handleScroll = (event) => {
+    const offsetX = event.nativeEvent.contentOffset.x;
+    const newIndex = Math.floor((offsetX + screenWidth / 2) / screenWidth);
+    setCurrentIndex(newIndex);
+  };
   // useEffect(() => {
   //   PropertyRepository.getProperty();
   // }, []);
@@ -79,19 +85,7 @@ export default function HomeDetails() {
     alignItems: "center",
     justifyContent: "center",
   },
-    imageDivider: {
-      width: "25%",
-      height: 3,
-      position: "absolute",
-      bottom: 0,
-      left: "50%",
-      transform: [{ translateX: -50 }],
-      backgroundColor: theme.colors.primary,
-    },
-    card: {
-      paddingHorizontal: 10,
-    },
-    titleSection: {
+     titleSection: {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
@@ -175,7 +169,7 @@ export default function HomeDetails() {
     },
     button: {
       position: "absolute",
-      bottom:15,
+      bottom:20,
       zIndex:1,
       left: "50%",
       transform: [{ translateX: -125 }],
@@ -187,7 +181,7 @@ export default function HomeDetails() {
     },
     buttonText: {
       fontFamily: theme.typography.fontFamily.regular,
-      color:theme.colors.header,
+      color:"#fff",
       fontWeight: theme.typography.fontWeight.bold,
       fontSize: theme.typography.fontSize.md,
     },
@@ -196,6 +190,16 @@ export default function HomeDetails() {
        top:50,
       zIndex:10,
       left:10,
+    },
+    imageCounter:{
+      position: "absolute",
+      bottom: "5%",
+      right:5,
+      alignSelf: "center",
+      backgroundColor: "rgba(0,0,0,0.6)",
+      paddingHorizontal: 12,
+      paddingVertical: 6,
+      borderRadius: 12,
     }
   });
 
@@ -219,11 +223,15 @@ export default function HomeDetails() {
           </TouchableOpacity>
         </View>
       )}
-
+      <View>
       <ScrollView
+        ref={scrollRef}
         horizontal
+        pagingEnabled
         showsHorizontalScrollIndicator={false}
-        style={{height: 100}}
+        onScroll={handleScroll}
+        scrollEventThrottle={16}
+        style={{ height: 270 }}
       >
         {images.map((image, index) => (
           <View
@@ -234,19 +242,33 @@ export default function HomeDetails() {
               alignItems: "center",
             }}
           >
-            <TouchableOpacity onPress={() => setSelectedImage(image) }>
-              <Image source={{ uri: image }} style={styles.image}/>
+            <TouchableOpacity onPress={() => setSelectedImage(image)}>
+              <Image
+                source={{ uri: image }}
+                style={{
+                  width: screenWidth,
+                  height: 270,
+                  resizeMode: "cover",
+                }}
+              />
             </TouchableOpacity>
-            <View style={styles.imageDivider} />
           </View>
         ))}
       </ScrollView>
-      <ScrollView style={styles.card}>
+      <View
+        style={styles.imageCounter}
+      >
+        <Text style={{ color: "white", fontWeight: "bold" }}>
+          {currentIndex + 1}/{images.length}
+        </Text>
+      </View>
+    </View>
+      <ScrollView style={{ paddingHorizontal: 10}}>
         <View style={{marginBottom:10}}>
           <View style={styles.titleSection}>
             <Text style={theme.typography.title(theme)}>Gorgeous Apartment</Text>
             <View style={styles.rating}>
-              {[...Array(4)].map((_, i) => (
+              {[...Array(4)].map((_,i) => (
                 <FontAwesome key={i} name="star" size={16} color="#FFD700" />
               ))}
             </View>

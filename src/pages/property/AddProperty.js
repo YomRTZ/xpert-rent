@@ -16,7 +16,6 @@ import PropertyRepository from '../../repository/PropertyRepository';
 import { Ionicons } from '@expo/vector-icons';
 import HouseCategory from '../HomePage/HouseCategory';
 import { useNavigation } from '@react-navigation/native';
-
 export default function AddProperty() {
   const { theme } = useTheme();
 const navigation=useNavigation();
@@ -121,7 +120,7 @@ const navigation=useNavigation();
       borderRadius: theme.radius.regular,
     },
     buttonText: {
-      color: theme.colors.regular,
+      color:"#fff",
       fontWeight: 'bold',
     },
     title: {
@@ -151,7 +150,7 @@ const navigation=useNavigation();
       marginTop: 10,
     },
     imagePickerText: {
-      color: theme.colors.regular,
+      color:"#fff",
       fontWeight: 'bold',
     },
     imageThumbnail: {

@@ -121,7 +121,7 @@ const navigation=useNavigation();
       borderRadius: theme.radius.regular,
     },
     buttonText: {
-      color: theme.colors.regular,
+      color:"#fff",
       fontWeight: 'bold',
     },
     title: {
@@ -151,7 +151,7 @@ const navigation=useNavigation();
       marginTop: 10,
     },
     imagePickerText: {
-      color: theme.colors.regular,
+      color:"#fff",
       fontWeight: 'bold',
     },
     imageThumbnail: {
