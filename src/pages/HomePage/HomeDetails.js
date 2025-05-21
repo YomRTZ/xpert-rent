@@ -8,7 +8,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   Dimensions,
-  SafeAreaView,
 } from "react-native";
 import { Ionicons, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "../../context/ThemeContext";
@@ -92,20 +91,12 @@ export default function HomeDetails() {
     card: {
       paddingHorizontal: 10,
     },
-    header: {
-      marginBottom: 20,
-    },
     titleSection: {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
     },
-    title: {
-      fontSize: theme.typography.fontSize.xl,
-      fontFamily: theme.typography.fontFamily.regular,
-      color: theme.colors.title,
-      fontWeight: theme.typography.fontWeight.bold,
-    },
+     
     rating: {
       flexDirection: "row",
     },
@@ -145,13 +136,6 @@ export default function HomeDetails() {
     },
     section: {
       marginTop: 20,
-    },
-    sectionTitle: {
-      fontFamily: theme.typography.fontFamily.semiBold,
-      color: theme.colors.title,
-      fontSize: theme.typography.fontSize.md,
-      fontWeight: theme.typography.fontWeight.bold,
-      marginBottom: 6,
     },
     description: {
       fontFamily: theme.typography.fontFamily.regular,
@@ -207,9 +191,6 @@ export default function HomeDetails() {
       fontWeight: theme.typography.fontWeight.bold,
       fontSize: theme.typography.fontSize.md,
     },
-    scrollContainer: {
-      height: 150,
-    },
     arrowIcon:{
        position: "absolute",
        top:50,
@@ -242,7 +223,7 @@ export default function HomeDetails() {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        style={styles.scrollContainer}
+        style={{height: 100}}
       >
         {images.map((image, index) => (
           <View
@@ -261,9 +242,9 @@ export default function HomeDetails() {
         ))}
       </ScrollView>
       <ScrollView style={styles.card}>
-        <View style={styles.header}>
+        <View style={{marginBottom:10}}>
           <View style={styles.titleSection}>
-            <Text style={styles.title}>Gorgeous Apartment</Text>
+            <Text style={theme.typography.title(theme)}>Gorgeous Apartment</Text>
             <View style={styles.rating}>
               {[...Array(4)].map((_, i) => (
                 <FontAwesome key={i} name="star" size={16} color="#FFD700" />
@@ -289,7 +270,7 @@ export default function HomeDetails() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>About Apartment</Text>
+          <Text style={theme.typography.sectionTitle(theme)}>About Apartment</Text>
           <Text style={styles.description}>
             This <Text style={{ fontWeight: "bold" }}>Gorgeous Apartment</Text>
             in Bole, Addis Ababa, Ethiopia & features 6 bedrooms and 3
@@ -300,7 +281,7 @@ export default function HomeDetails() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Specification</Text>
+          <Text style={theme.typography.sectionTitle(theme)}>Specification</Text>
           <View style={styles.specRow}>
             <View style={styles.specItem}>
               <Ionicons

@@ -23,7 +23,7 @@ const Profile = () => {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      padding:10,
+      paddingVertical:5,
       backgroundColor: theme.colors.surface,
     },
     leftContainer: {
