@@ -13,7 +13,7 @@ export default function Home() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      paddingBottom:"10%",
+      paddingBottom:"15%",
       backgroundColor:theme.colors.background
     },
     header: {
@@ -25,8 +25,8 @@ export default function Home() {
   });
   return (
     <>
-    <View style={[styles.container]}>
     <View style={{paddingTop: insets.top ,backgroundColor:theme.colors.surface}} />
+    <View style={[styles.container]}>
       <Navbar />
       <SearchBar />
       <ScrollView  showsVerticalScrollIndicator={false} contentContainerStyle={{backgroundColor:theme.colors.background}}>

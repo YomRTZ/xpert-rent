@@ -9,17 +9,17 @@ import {
   Text,
   Image,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import * as ImagePicker from 'expo-image-picker';
 import PropertyRepository from '../../repository/PropertyRepository';
 import { useTheme } from '../../context/ThemeContext';
 import { Ionicons } from '@expo/vector-icons';
 import HouseCategory from '../HomePage/HouseCategory';
 import { useNavigation } from '@react-navigation/native';
-
+import { useSafeAreaInsets} from "react-native-safe-area-context";
 export default function PropertyUpdate() {
   const { theme } = useTheme();
 const navigation=useNavigation();
+const insets = useSafeAreaInsets();
   const [formData, setFormData] = useState({
     home_type: '',
     city: '',
@@ -180,7 +180,9 @@ const navigation=useNavigation();
   });
 
   return (
-    <SafeAreaView style={styles.container}>
+    <>
+    <View style={{paddingTop: insets.top ,backgroundColor:theme.colors.background}} />
+    <View style={styles.container}>
        <TouchableOpacity onPress={()=>navigation.goBack()} style={{paddingLeft:10}}><Ionicons name="arrow-back" size={35} color={theme.colors.iconColor}/></TouchableOpacity>
        <View style={styles.topSection}>      
     <TouchableOpacity onPress={handleDelate} style={[styles.button,{backgroundColor:theme.colors.error}]}>
@@ -265,6 +267,7 @@ const navigation=useNavigation();
           ))}
         </ScrollView>
       </ScrollView>
-    </SafeAreaView>
+    </View>
+    </>
   );
 }
