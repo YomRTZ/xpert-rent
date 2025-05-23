@@ -25,8 +25,8 @@ export default function Home() {
   });
   return (
     <>
-    <View style={{paddingTop: insets.top ,backgroundColor:theme.colors.surface}} />
     <View style={[styles.container]}>
+    <View style={{paddingTop: insets.top ,backgroundColor:theme.colors.surface}} />
       <Navbar />
       <SearchBar />
       <ScrollView  showsVerticalScrollIndicator={false} contentContainerStyle={{backgroundColor:theme.colors.background}}>
